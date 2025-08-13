@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>High and Low Blockscript Fonts</title>
+        <style>
+            /*
+              Define the custom font using @font-face.
+              The browser will request /fonts/Inter-Regular.woff2, and our
+              Bun server will intercept it and serve the .gz version with the
+              correct headers.
+            */
+            @font-face {
+                font-family: "High Blockscript";
+                src:
+                    url("https://sepolia-api-v2.ethscriptions.com/ethscriptions/0xeb081698024c0462eb7aa1cbf5fd87b04c91b7a0e5423e0d2a4c7adde80fd24f/data") format("woff2"),
+                    url("https://sepolia-api-v2.ethscriptions.com/ethscriptions/0x00c1826ad351c99c5e18741aacb524816b28e4cd70e5003d489a4f699b10ab11/data") format("opentype");
+
+                    /*url("/fonts/high-blockscript.woff2") format("woff2"),
+                    url("/fonts/high-blockscript.otf") format("opentype");*/
+            }
+
+            @font-face {
+                font-family: "Low Blockscript";
+                src:
+                    url("https://sepolia-api-v2.ethscriptions.com/ethscriptions/0xfad59de7f98c62f92933335e03e3cb876de7be0d532333b692feb5a0c6393146/data") format("woff2"),
+                    url("https://sepolia-api-v2.ethscriptions.com/ethscriptions/0x29a04d55f1e1bdbb0a37d43ffee1027f6e954500a9c76032f3a06dc2dbaf0d35/data") format("opentype");
+            }
+
+            .low {
+                font-family: "Low Blockscript";
+            }
+
+            .high {
+                font-family: "High Blockscript";
+            }
+
+            body {
+                display: grid;
+                place-content: center;
+                height: 100vh;
+                margin: 0;
+                background-color: #f0f0f0;
+            }
+
+            h1 {
+                font-size: 4rem;
+                font-weight: 400;
+                color: #333;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 class="low">Hello with Low Blockscript</h1>
+        <h1 class="high">Hello with High Blockscript</h1>
+    </body>
+</html>
