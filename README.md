@@ -82,11 +82,6 @@ MIME type: font/woff2
 Size: 18015 bytes
 Hash: 0xeb081698024c0462eb7aa1cbf5fd87b04c91b7a0e5423e0d2a4c7adde80fd24f
 
-Name: low-blockscript.otf
-MIME type: font/otf
-Size: 68737 bytes
-Hash: 0x29a04d55f1e1bdbb0a37d43ffee1027f6e954500a9c76032f3a06dc2dbaf0d35
-
 Name: high-blockscript.otf
 MIME type: font/otf
 Size: 38385 bytes
@@ -96,6 +91,9 @@ Name: low-blockscript.woff2
 MIME type: font/woff2
 Size: 30259 bytes
 Hash: 0xfad59de7f98c62f92933335e03e3cb876de7be0d532333b692feb5a0c6393146
-```
 
-##
+Name: low-blockscript.otf
+MIME type: font/otf
+Size: 68737 bytes
+Hash: 0x29a04d55f1e1bdbb0a37d43ffee1027f6e954500a9c76032f3a06dc2dbaf0d35
+```
