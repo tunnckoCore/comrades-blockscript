@@ -4,9 +4,10 @@
   "type": "module",
   "private": true,
   "devDependencies": {
-    "@biomejs/biome": "2.1.2",
+    "@biomejs/biome": "^2",
     "@types/bun": "^1.2.20",
-    "ultracite": "5.1.2"
+    "biome-config-xaxa": "^0.1.8",
+    "ultracite": "^5"
   },
   "scripts": {
     "dev": "bun --watch index.ts",

@@ -1,19 +1,30 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.1.2/schema.json",
-  "extends": [
-    "ultracite"
-  ],
-  "linter": {
-    "rules": {
-      "performance": {
-        "useTopLevelRegex": "off"
-      },
-      "nursery": {
-        "noAwaitInLoop": "off"
-      },
-      "suspicious": {
-        "noConsole": "off"
-      }
-    }
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "extends": ["biome-config-xaxa"],
+  "files": {
+    "ignoreUnknown": true,
+    "includes": [
+      "**/src/**/*.{ts,tsx,js,jsx,mjs}",
+      "**/*.{ts,tsx,js,jsx,mjs}",
+      "**/.vscode/**/*",
+      "**/index.html",
+      "**/vite.config.js",
+      "!**/src/routes/__root.tsx",
+      "!**/src/routeTree.gen.ts",
+      "!node_modules",
+      "!convex/tsconfig.json",
+      "!convex/_generated/*",
+      "!convex/**/_generated/*",
+      "!dist",
+      "!build",
+      "!**/src/components/ui/*",
+      "!**/src/hooks/use-mobile.ts",
+      "!convex/betterAuth/schema.ts"
+    ]
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space",
+    "indentWidth": 2
   }
 }

@@ -1,3 +1,3 @@
-import { getDataURIs } from './utils.ts';
+import { getDataURIs } from "./utils.ts";
 
 console.log(await getDataURIs());
