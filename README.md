@@ -5,11 +5,11 @@
 since fonts are already ethscribed on mainnet:
 
 ```
-// === Mainnet
+// === Mainnet (without esip6)
 // highscript woff2 gzip = 0x5296ef8b8fb4168b57a09813622f7bc8198a9456b57886e47e1129475ef88d4a
 // highscript otf gzip = 0xcbf0c8a0c61f8018f9ad186e4aaa300faad892c6cbfa398841814f02c3bdea30
-// lowscript woff2 gzip = 0x665ba2d452904e03e1943e0800af42468e107b614ee4ec59d377a66ffbe5ea5d
-// lowscript otf gzip = 0x50c42bd4696c50868b147396a707ede771abb4bd10acbfdd1af00ef186e6187f
+// lowscript woff2 gzip = 0x6c588b716ba2c2eda5fc12acea9914a103f0bfeb0bb47ab2072cf523fa2339a8
+// lowscript otf gzip = 0x665ba2d452904e03e1943e0800af42468e107b614ee4ec59d377a66ffbe5ea5d
 ```
 
 you can ethscribe on your own:
