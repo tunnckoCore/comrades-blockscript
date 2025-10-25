@@ -1,0 +1,23 @@
+{
+  "name": "blockscript",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@biomejs/biome": "2.1.2",
+    "@types/bun": "^1.2.20",
+    "ultracite": "5.1.2"
+  },
+  "scripts": {
+    "dev": "bun --watch index.ts",
+    "ethscribe": "bun ethscribe.ts"
+  },
+  "peerDependencies": {
+    "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.1",
+    "file-type": "^21.0.0",
+    "viem": "^2.33.3"
+  }
+}

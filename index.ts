@@ -1,0 +1,73 @@
+import fs from "node:fs/promises";
+import { getDataURIs } from "./utils";
+
+// === Sepolia
+// highscript woff2 gzip = 0x2f8397abd2d4244c3c2196fcabae519ef625ac292eeeccbbf632b01252366702
+// highscript otf gzip = 0x9dec27a0a69048775add0de1577cd80761a2d6e4dcbf49482e179bea12ab52c7
+// lowscript woff2 gzip = 0x0330e1fa0186056902a678ccacef184a8fb0312a653ae4e0efc78765226c2a60
+// lowscript otf gzip = 0xc5a5347cb02f065ae48428249b6906da832325f00d89bd9cd15abdd277acbf65
+
+// highscript woff2 NO-GZIP = 0x827865efd69b9fe282b1a6dc7ae39ccd280712c2796631c416edf7181e7b1d73
+// highscript otf NO-GZIP = 0xc61bbc261fd86915572c42ce1819dd9ebeaffac399071d0580c7aee8889d0ad2
+// lowscript woff2 NO-GZIP = 0x977b486a8251cb3c1261b47a43504c5ddc2ca7146a106de2b476ff78beb90d53
+// lowscript otf NO-GZIP = 0xba4a9f9df378b50651dd4cb2f1c812754f25e04c55baf729230a235899ea2be0
+
+// === Mainnet
+// highscript woff2 gzip = 0x5296ef8b8fb4168b57a09813622f7bc8198a9456b57886e47e1129475ef88d4a
+// highscript otf gzip = 0xcbf0c8a0c61f8018f9ad186e4aaa300faad892c6cbfa398841814f02c3bdea30
+// lowscript woff2 gzip = 0x665ba2d452904e03e1943e0800af42468e107b614ee4ec59d377a66ffbe5ea5d
+// lowscript otf gzip = 0x50c42bd4696c50868b147396a707ede771abb4bd10acbfdd1af00ef186e6187f
+
+export default {
+  async fetch(req: Request) {
+    const url = new URL(req.url);
+
+    if (url.pathname === "/") {
+      return new Response(await fs.readFile("./index.html"), {
+        headers: {
+          "Content-Type": "text/html",
+        },
+      });
+    }
+
+    const fonts = await getDataURIs();
+    // const fonts = [
+    //   {
+    //     name: 'high-blockscript.woff2',
+    //     hash: '0x9cc449d9718a82a9a573d4d60af270798275d4e19555f62a68ddcb7edef816fc',
+    //   },
+    //   {
+    //     name: 'high-blockscript.otf',
+    //     hash: '0x46f94ecd0172c1bb60686a135d9b2510747bacc02631a61743153ef5203547e7',
+    //   },
+    //   {
+    //     name: 'low-blockscript.woff2',
+    //     hash: '0xe7d7e0a1f5224d19ca9f1331fefec71013b67992a979485dfa38454fd811eea4',
+    //   },
+    //   {
+    //     name: 'low-blockscript.otf',
+    //     hash: '0xfe191672acf7b38833ad08e7d42f27818135c7ab3908531fd95cd765a94ea879',
+    //   },
+    // ];
+
+    if (url.pathname.startsWith("/fonts")) {
+      const found = fonts.find(({ name }) => url.pathname.includes(name));
+
+      if (found) {
+        const ethscriptionUrl = `https://sepolia-api-v2.ethscriptions.com/ethscriptions/${found.name}`;
+
+        const arrbuf = await fetch(found.data || ethscriptionUrl).then((x) =>
+          x.arrayBuffer(),
+        );
+        const response = new Response(new Uint8Array(arrbuf), {
+          headers: {
+            "Content-Encoding": "gzip",
+            "Content-Type": found.mime,
+            "Content-Length": arrbuf.byteLength.toString(),
+          },
+        });
+        return response;
+      }
+    }
+  },
+};
